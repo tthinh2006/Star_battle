@@ -6,10 +6,85 @@ The solver explores the board **row by row in a fixed order**. It generates vali
 
 A standalone HTML page is also available for replaying **recorded DFS search steps**. The HTML page and Python solver run independently: the page does not execute Python or solve a new puzzle in the browser.
 
-This README documents the **DFS implementation only**.
-
 ## Requirements and run on Windows
 
+Python 3.10 or newer is required.
+
+The DFS solver uses only Python's standard library. No additional packages or external dependencies are required.
+
+### 1. Check version
+
+```powershell
+py -3 --version
+```
+
+### 2. Run the DFS solver
+
+The DFS implementation is located in `blind_search.py`.
+
+The file provides the `star_battle_dfs_solver()` function and does not automatically execute a puzzle when run directly.
+
+To run the included example (if `run_example.py` has been added to the repository):
+
+```powershell
+py -3 run_example.py
+```
+
+Then execute the example provided in the [Using the DFS solver](#using-the-dfs-solver) section.
+
+The solver returns a set of `(row, column)` coordinates representing the placed stars, or `None` if no solution is found.
+
+### 3. Run automated tests
+
+The project uses Python's built-in `unittest` framework. No additional testing libraries are required.
+
+From the repository root directory, run:
+
+```powershell
+py -3 -m unittest discover -s tests -v
+```
+
+This command discovers and executes the test cases defined in `tests/test_solver.py`.
+
+The tests verify:
+
+- Correct solutions for the 5x5 and 6x6 sample puzzles.
+- Compliance with row, column, and region star-count constraints.
+- Non-adjacency of all placed stars.
+- Rejection of non-square puzzle inputs.
+- Rejection of invalid star counts.
+
+Expected output:
+
+```text
+test_5x5_solution ... ok
+test_6x6_solution ... ok
+test_invalid_non_square ... ok
+test_invalid_stars_count ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests
+
+OK
+```
+
+All tests should pass before committing changes to the solver.
+
+### 4. View the DFS visualization
+
+Open `index.html` in a modern web browser.
+
+Select a sample puzzle and switch to the **DFS** tab. Use the playback controls to inspect the recorded search process step by step.
+
+The visualization supports:
+
+- Step-by-step traversal of DFS search states.
+- Forward and backward navigation.
+- Play, pause, and reset controls.
+- Adjustable playback speed.
+- Display of visited nodes and backtracking statistics.
+
+The HTML visualization is standalone and does not require a Python server. It replays previously recorded search events rather than executing the Python solver in real time.
 
 ## Star Battle rules
 
