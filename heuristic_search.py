@@ -10,10 +10,9 @@ Không lưu sẵn đáp án cho bất kỳ bàn cờ nào.
 visualizer (tùy chọn) nhận action='snapshot' như bản cải tiến;
 visualizer cũ cần điều chỉnh để hiển thị định dạng này.
 """
+from collections import defaultdict
 from dataclasses import dataclass
 from itertools import combinations
-from .game import get_region_cell
-
 
 def validate_puzzle(puzzle, stars):
     n = len(puzzle)
