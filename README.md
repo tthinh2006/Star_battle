@@ -204,7 +204,7 @@ The visualizer shows **nodes, backtracks, and decisions** for DFS. For Heuristic
 ```text
 Star_battle/
   README.md             # Project documentation
-  index.py              # PySide6 UI, sample puzzles, worker, solver loader
+  visualizer.py              # PySide6 UI, sample puzzles, worker, solver loader
   core.py               # Validation, row model, shared search state, statistics
   blind_search.py       # Fixed-order DFS with backtracking
   heuristic_search.py   # MRV, Forward Checking, and quota-bound checks
