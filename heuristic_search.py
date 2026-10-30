@@ -1,11 +1,13 @@
 """Star Battle — Backtracking + Forward Checking + MRV (Python 3.10+).
 
-Dùng get_region_cell từ game.py trong cùng package star_battle.
+File độc lập: chỉ dùng thư viện chuẩn, không import core.py, game.py
+hoặc file thuật toán còn lại. Chép vào thư mục star_battle của dự án.
 Giữ nguyên tên hàm và tham số để chạy với benchmark của bản tham khảo.
 
 Mỗi biến là một hàng; mỗi giá trị là một cách đặt đủ k sao không kề nhau.
 Bản tách giữ nguyên thứ tự tìm kiếm, kiểm tra và bộ đếm của bản cải tiến.
-Không lưu sẵn đáp án cho bất kỳ bàn cờ nào.
+Một số hàm kiểm tra/cấu trúc dữ liệu được lặp lại có chủ đích để mỗi file
+có thể hoạt động riêng. Không lưu sẵn đáp án cho bất kỳ bàn cờ nào.
 
 visualizer (tùy chọn) nhận action='snapshot' như bản cải tiến;
 visualizer cũ cần điều chỉnh để hiển thị định dạng này.
@@ -13,6 +15,16 @@ visualizer cũ cần điều chỉnh để hiển thị định dạng này.
 from collections import defaultdict
 from dataclasses import dataclass
 from itertools import combinations
+
+
+
+def get_region_cell(puzzle):
+    regions = defaultdict(list)
+    for r, row in enumerate(puzzle):
+        for c, region in enumerate(row):
+            regions[region].append((r, c))
+    return regions
+
 
 def validate_puzzle(puzzle, stars):
     n = len(puzzle)
